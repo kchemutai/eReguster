@@ -1,0 +1,53 @@
+<header
+	th:fragment="header"
+	xmlns:th="http://www.thymeleaf.org"
+	style="justify-content: space-between; width: 100%"
+>
+	<nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/eregister/home}">eRegister</a>
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-bs-toggle="collapse"
+				data-bs-target="#navbarColor03"
+				aria-controls="navbarColor03"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarColor03">
+				<ul class="navbar-nav me-auto">
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/eregister/home}">Home </a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/eregister/students/list}">Students </a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">About</a>
+					</li>
+				</ul>
+				<form class="d-flex" method="get" action="/eregister/students/search/">
+					<input
+						class="form-control me-sm-2"
+						type="search"
+						placeholder="Search for Student"
+						id="search"
+					/>
+					<button
+						class="btn btn-secondary my-2 my-sm-0"
+						type="submit"
+						style="margin-left: 3px"
+					>
+						Search
+					</button>
+				</form>
+			</div>
+		</div>
+		<span style="text-align: center; justify-content: center; align-items: center"
+			>Welcome Guest</span
+		>
+	</nav>
+</header>

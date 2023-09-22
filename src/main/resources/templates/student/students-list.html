@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html
+	lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:Layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	Layout:decorate="~{layouts/main-layout}"
+>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>eRegister - Home</title>
+	</head>
+	<body>
+		<div class="container" Layout:fragment="content">
+			<h3>List of Students</h3>
+			<a
+				type="button"
+				class="btn btn-primary"
+				style="align-self: flex-end"
+				th:href="@{/eregister/students/new}"
+			>
+				Add Student
+			</a>
+
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Student Number</th>
+						<th scope="col">First Name</th>
+						<th scope="col">Middle Name</th>
+						<th scope="col">Last Name</th>
+						<th scope="col">CGPA</th>
+						<th scope="col">Date Of Enrollment</th>
+						<th scope="col">Is International</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="student, iter : ${students}">
+						<th scope="row" th:text="${iter.count}"></th>
+						<td th:text="${student.studentNumber}"></td>
+						<td th:text="${student.firstName}"></td>
+						<td th:text="${student.middleName}"></td>
+						<td th:text="${student.lastName}"></td>
+						<td th:text="${student.cgpa}"></td>
+						<td th:text="${student.dateOfEnrollment}"></td>
+						<td th:text="${student.isInternational}"></td>
+						<td style="display: flex; justify-content: space-between">
+							<a
+								th:href="@{/eregister/students/edit/{id}(id=${student.studentId})}"
+								class="btn btn-primary"
+								type="btn"
+								>Edit</a
+							>
+							<form action="#" th:action="@{/eregister/students/delete/{id}(id=${student.studentId})}" th:method="delete" >
+								<button type="submit" class="btn btn-danger">
+									Delete
+								</button>
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>

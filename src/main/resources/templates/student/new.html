@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html
+	lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:Layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	Layout:decorate="~{layouts/main-layout}"
+>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>eRegister - New Student</title>
+	</head>
+	<body>
+		<div class="container" Layout:fragment="content">
+			<h3>Register New Student</h3>
+			<form method="post" th:object="${student}" action="/eregister/students/new">
+				<div class="form-group">
+					<label for="studentNumber">Student Number</label>
+					<input
+						type="number"
+						class="form-control"
+						id="studentNumber"
+						aria-describedby="student number"
+						placeholder="Enter Student Number"
+						th:field="*{studentNumber}"
+						required
+					/>
+					<span
+						th:if="${#fields.hasErrors('studentNumber')}"
+						th:errorclass="error"
+						th:errors="*{studentNumber}"
+					></span>
+				</div>
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+					<input
+						type="text"
+						class="form-control"
+						id="firstName"
+						placeholder="Enter First Name"
+						th:field="*{firstName}"
+						required
+					/>
+					<span
+						th:if="${#fields.hasErrors('firstName')}"
+						th:errors="*{firstName}"
+						class="alert alert-danger"
+					></span>
+				</div>
+				<div class="form-group">
+					<label for="firstName">Middle Name</label>
+					<input
+						type="text"
+						class="form-control"
+						id="middleName"
+						placeholder="Enter Middle Name"
+						th:field="*{middleName}"
+					/>
+					<span
+						th:if="${#fields.hasErrors('firstName')}"
+						th:errors="*{firstName}"
+						class="alert alert-danger"
+					></span>
+				</div>
+				<div class="form-group">
+					<label for="lastName">Last Name</label>
+					<input
+						type="text"
+						class="form-control"
+						id="lastName"
+						placeholder="Enter Last Name"
+						th:field="*{lastName}"
+						required
+					/>
+					<span
+						th:if="${#fields.hasErrors('lastName')}"
+						th:errors="*{lastName}"
+						class="alert alert-danger"
+					></span>
+				</div>
+				<div class="form-group">
+					<label for="cgpa">CGPA</label>
+					<input
+						type="text"
+						class="form-control"
+						id="cgpa"
+						placeholder="Enter CGPA"
+						th:field="*{cgpa}"
+						required
+					/>
+					<span
+						th:if="${#fields.hasErrors('cgpa')}"
+						th:errors="*{cgpa}"
+						class="alert alert-danger"
+					></span>
+				</div>
+				<div class="form-group">
+					<label for="dateOfEnrollment">Date Of Enrollment</label>
+					<input
+						type="date"
+						class="form-control"
+						id="dateOfEnrollment"
+						placeholder="Enter Date Of Enrollment"
+						th:field="*{dateOfEnrollment}"
+						required
+					/>
+					<span
+						th:if="${#fields.hasErrors('dateOfEnrollment')}"
+						th:errors="*{dateOfEnrollment}"
+						class="alert alert-danger"
+					></span>
+				</div>
+				<div class="form-group">
+					<label for="isInternational">Is International</label>
+					<input type="checkbox" class="form-control-check" id="isInternational" />
+				</div>
+
+				<a href="">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</a>
+			</form>
+		</div>
+	</body>
+</html>
